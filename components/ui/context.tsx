@@ -1,18 +1,17 @@
-import { createContext, useContext, useState, FC } from "react"
+import { createContext, FC, useContext, useReducer } from "react"
 
 export interface StateModifiers {
-    openSidebar: () => void
-    closeSidebar: () => void
+  openSidebar: () => void
+  closeSidebar: () => void
 }
 
 export interface StateValues {
-    isSidebarOpen: boolean
-
+  isSidebarOpen: boolean
 }
 
-const StateModifiers = {
-    openSidebar: () => {},
-    closeSidebar: () => {}
+const stateModifiers = {
+  openSidebar: () => {},
+  closeSidebar: () => {}
 }
 
 const initialState = { isSidebarOpen: false }
@@ -20,29 +19,49 @@ const initialState = { isSidebarOpen: false }
 type State = StateValues & StateModifiers
 
 const UIContext = createContext<State>({
-    ...StateModifiers,
-    ...initialState
+  ...stateModifiers,
+  ...initialState
 })
 
-export const UiProvider: FC = ({children}) => {
+type Action = { type: "OPEN_SIDEBAR" | "CLOSE_SIDEBAR" }
 
-    const openSidebar = () => alert("opening")
-    const closeSidebar = () => alert("closing")
-
-    const value = {
-        openSidebar,
-        closeSidebar,
+function uiReducer(state: StateValues, action: Action) {
+  switch(action.type) {
+    case "OPEN_SIDEBAR": {
+      return {
+        ...state,
         isSidebarOpen: true
+      }
     }
+    case "CLOSE_SIDEBAR": {
+      return {
+        ...state,
+        isSidebarOpen: false
+      }
+    }
+  }
+}
 
-    return(
-        <UIContext.Provider value={value}>
-            {children}
-        </UIContext.Provider>
-    )
+export const UiProvider: FC = ({children}) => {
+  const [state, dispatch] = useReducer(uiReducer, initialState)
+
+  const openSidebar = () => dispatch({type: "OPEN_SIDEBAR"})
+  const closeSidebar = () => dispatch({type: "CLOSE_SIDEBAR"})
+
+  const value = {
+    ...state,
+    openSidebar,
+    closeSidebar
+  }
+
+  return (
+    <UIContext.Provider value={value}>
+      {children}
+    </UIContext.Provider>
+  )
 }
 
 export const useUI = () => {
-    const context = useContext(UIContext)
-    return context
+  const context = useContext(UIContext)
+  return context
 }
