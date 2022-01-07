@@ -1,17 +1,18 @@
-import { createContext, FC, useContext, useReducer } from "react"
+import { createContext, useContext, useReducer, FC } from "react"
 
 export interface StateModifiers {
-  openSidebar: () => void
-  closeSidebar: () => void
+    openSidebar: () => void
+    closeSidebar: () => void
 }
 
 export interface StateValues {
-  isSidebarOpen: boolean
+    isSidebarOpen: boolean
+
 }
 
 const stateModifiers = {
-  openSidebar: () => {},
-  closeSidebar: () => {}
+    openSidebar: () => {},
+    closeSidebar: () => {}
 }
 
 const initialState = { isSidebarOpen: false }
