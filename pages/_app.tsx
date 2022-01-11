@@ -1,7 +1,7 @@
 import { AppProps } from "next/app"
 import { FC } from "react"
 import "@assets/main.css"
-import { UiProvider, useUI } from "@components/ui/context"
+import { UiProvider } from "@components/ui/context"
 
 const Noop: FC = ({children}) => <>{children}</>
 

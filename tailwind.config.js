@@ -41,6 +41,9 @@ module.exports = {
         secondary: 'var(--text-secondary)',
       }
     },
+    variants: {
+      extend: {},
+    }
   },
   plugins: [],
 }
