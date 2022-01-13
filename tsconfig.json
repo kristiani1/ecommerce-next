@@ -28,8 +28,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/product/ProductSlider/ProductSlider.js",
-    "components/product/ProductSlider/ProductSlider.Jsx"
   ],
   "exclude": ["node_modules"]
 }
