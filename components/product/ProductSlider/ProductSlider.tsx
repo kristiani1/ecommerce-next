@@ -7,14 +7,13 @@ import style from "./ProductSlider.module.css"
 
 const ProductSlider: FC = ({children}) => {
 
-    const [currentSlide, setCurrentSlide] = useState(0)
     const [sliderRef, slider] = useKeenSlider({
         initial: 0,
         loop: true,
-        slideChanged(s) {
-            //setCurrentSlide(s.details().relativeSlide)
-        },
     })
+
+    const onPrev = React.useCallback(() => slider.current?.prev(), [slider])
+    const onNext = React.useCallback(() => slider.current?.next(), [slider])
 
     return (
         <div className={style.root}>
@@ -23,11 +22,11 @@ const ProductSlider: FC = ({children}) => {
                 className="keen-slider h-full transition-opacity"
             >
                 <button
-                    //onClick={slider.prev}
+                    onClick={onNext}
                     className={cn(style.leftControl, style.control)}
                 />
                 <button
-                    //onClick={slider?.next}
+                    onClick={onPrev}
                     className={cn(style.rightControl, style.control)}
                 />
                 { Children.map(children, child => {

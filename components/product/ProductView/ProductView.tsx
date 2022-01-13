@@ -57,7 +57,8 @@ const ProductView: FC<Props> = ({ product }) => {
                         <div>
                             <Button
                                 className={style.button}
-                                onClick={() => alert("adding to cart")}>
+                                onClick={() => alert("adding to cart")}
+                            >
                                 Add to Cart
                             </Button>
                         </div>
