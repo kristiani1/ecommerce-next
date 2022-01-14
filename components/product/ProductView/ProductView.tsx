@@ -1,17 +1,21 @@
 
 import cn from 'classnames'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import style from './ProductView.module.css'
 import { Container, Button } from '@components/ui'
 import Image from "next/image"
 import { Product } from '@common/types/product'
-import { ProductSlider } from "@components/product"
+import { ProductSlider, Swatch } from "@components/product"
+import { Choices, getVariant } from '../helpers'
 
 interface Props {
     product: Product
 }
 
 const ProductView: FC<Props> = ({ product }) => {
+    const [ choices, setChoices ] = useState<Choices>({})
+
+    const variant = getVariant(product, choices)
 
     return (
         <Container>
@@ -44,12 +48,31 @@ const ProductView: FC<Props> = ({ product }) => {
                 </div>
                     <div className={style.sidebar}>
                         <section>
-                            <div className="pb-4">
-                                <h2 className="uppercase font-medium">Color</h2>
-                                <div className="flex flex-row py-4">
-                                    Variant Options Here!
+                            { product.options.map(option =>
+                                <div key={option.id} className="pb-4">
+                                    <h2 className="uppercase font-medium">{option.displayName}</h2>
+                                    <div className="flex flex-row py-4">
+                                    { option.values.map(optValue => {
+                                        const activeChoice = choices[option.displayName.toLowerCase()]
+                                        return (
+                                            <Swatch
+                                                key={`${option.id}-${optValue.label}`}
+                                                label={optValue.label}
+                                                color={optValue.hexColor}
+                                                variant={option.displayName}
+                                                active={optValue.label.toLowerCase() === activeChoice}
+                                                onClick={() => {
+                                                    setChoices({
+                                                        ...choices,
+                                                        [option.displayName.toLowerCase()]: optValue.label.toLowerCase()
+                                                    })
+                                                }}
+                                            />
+                                        )}
+                                    )}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                             <div className="pb-14 break-words w-full max-w-xl text-lg">
                                 { product.description }
                             </div>
