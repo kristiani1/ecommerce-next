@@ -8,12 +8,13 @@ export type Choices = {
 }
 
 
-export function getVariant(product: Product, choices: Choices) {
+export const getVariant = (product: Product, choices: Choices) =>
+    
+    product.variants.find(variant =>
+        variant.options.every(variantOption => {
 
-    const variant = product.variants.find((variant) => {
-        console.log(variant)
-        return true
-    })
+            const optionName = variantOption.displayName.toLocaleLowerCase()
 
-    return variant
-}
+            return optionName in choices && choices[optionName] === variantOption.values[0].label
+        })
+    )
