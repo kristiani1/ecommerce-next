@@ -15,7 +15,7 @@ const fetchApi = async <T>({
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      query, 
+      query,
       variables
     })
   })

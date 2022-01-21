@@ -1,4 +1,3 @@
-
 import cn from 'classnames'
 import { FC, useState } from 'react'
 import style from './ProductView.module.css'
@@ -25,11 +24,11 @@ const ProductView: FC<Props> = ({ product }) => {
         try {
             const item = {
                 productId: String(product.id),
-                variantId: variant?.id,
-                variantOptions: variant?.options
+                variantId: String(variant?.id),
+                variantOptions: variant?.options,
+                quantity: 1
             }
         const output = await addItem(item)
-        alert(JSON.stringify(output))
         openSidebar()
         } catch {}
     }

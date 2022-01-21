@@ -22,7 +22,7 @@ export const ApiProvider = ({
             hooks,
             checkoutCookie: config.checkoutCookie
         }
-    }, [config.fetch, config.checkoutCookie, hooks])
+    },[config.fetch, config.checkoutCookie, hooks])
 
     return (
         <ApiContext.Provider value={coreConfig}>

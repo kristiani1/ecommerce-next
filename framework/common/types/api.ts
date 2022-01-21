@@ -1,4 +1,4 @@
-// import { ApiHooks } from "./hooks"
+import { ApiHooks } from "./hooks"
 
 export type ApiFetcherOptions = {
     query: string
@@ -12,13 +12,6 @@ export type ApiFetcherOptions = {
   export interface ApiConfig {
     checkoutCookie: string
     fetch<T>(options: ApiFetcherOptions): Promise<ApiFetcherResults<T>>
-  }
-
-  export interface ApiHooks {
-    cart: {
-      useAddItem: any
-      useCart: any
-    }
   }
 
   export type Variables = {[key: string]: string | any | undefined}
