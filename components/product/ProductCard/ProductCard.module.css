@@ -36,7 +36,7 @@
 
 .productBg {
     @apply absolute inset-0 z-0;
-    background-color: #212529;
+    background-color: #008899;
   
     &:before {
         @apply transition-transform duration-500 block w-full h-full bg-repeat-space;

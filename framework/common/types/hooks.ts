@@ -3,8 +3,10 @@ import { SWRResponse } from "swr"
 
 export interface ApiHooks {
     cart: {
-      useAddItem: MutationHook
-      useCart: any
+        useAddItem: MutationHook
+        useCart: SWRHook
+        useRemoveItem: MutationHook
+        useUpdateItem: MutationHook
     }
 }
 

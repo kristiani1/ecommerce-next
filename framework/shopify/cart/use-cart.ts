@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import useCart, { UseCart } from "@common/cart/use-cart"
 import { createCheckout, getCheckoutQuery, checkoutToCart } from "@framework/utils"
 import { useMemo } from "react"
