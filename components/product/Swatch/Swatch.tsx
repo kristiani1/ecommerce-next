@@ -9,11 +9,12 @@ interface Props {
     label?: string
     variant?: "size" | "color" | string
     active?: boolean
+    size?: "sm" | "md" | "lg"
     onClick: () => void
 }
 
 
-const Swatch: FC<Props> = ({color, label, variant, active, ...rest}) => {
+const Swatch: FC<Props> = ({color, label, variant, active, size="md", ...rest}) => {
 
     label = label?.toLowerCase()
     variant = variant?.toLocaleLowerCase()
@@ -24,7 +25,8 @@ const Swatch: FC<Props> = ({color, label, variant, active, ...rest}) => {
             [style.active]: active,
             [style.color]: color,
             [style.size]: variant === "size",
-            [style.dark]: color && isDark(color)
+            [style.dark]: color && isDark(color),
+            [style.sm]: size === "sm"
         }
       )
 
