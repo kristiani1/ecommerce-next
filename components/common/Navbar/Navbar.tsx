@@ -24,9 +24,6 @@ const Navbar: FC = () => {
                     <Link href="/">
                         <a className={style.link}>Candies</a>
                     </Link>
-                    <Link href="/">
-                        <a className={style.link}>Sodas</a>
-                    </Link>
                 </nav>
                 <div className="flex flex-1 justify-end space-x-8">
                     <Usernav />
