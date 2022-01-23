@@ -83,8 +83,8 @@ const CartSidebar: FC = () => {
                     </div>
                     <Button
                         Component="a"
-                        href="/"
-                        >
+                        href="/api/checkout"
+                    >
                         Proceed to Checkout
                     </Button>
                 </div>
