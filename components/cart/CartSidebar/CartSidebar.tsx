@@ -5,6 +5,7 @@ import { useUI } from '@components/ui/context'
 import useCart from '@framework/cart/use-cart'
 import { LineItem } from '@common/types/cart'
 import CartItem from '../CartItem'
+import { Button } from '@components/ui'
 
 const CartSidebar: FC = () => {
     const { closeSidebar } = useUI()
@@ -80,13 +81,12 @@ const CartSidebar: FC = () => {
                                 <span>{data?.totalPrice} {data?.currency.code}</span>
                             </div>
                     </div>
-                    <button
-                        onClick={() => {
-                        alert("Going to checkout!")
-                        }}
+                    <Button
+                        Component="a"
+                        href="/"
                         >
                         Proceed to Checkout
-                    </button>
+                    </Button>
                 </div>
             </>
             }

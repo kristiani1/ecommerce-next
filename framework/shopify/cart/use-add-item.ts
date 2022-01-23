@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useAddItem } from "@common/cart"
 import { MutationHook } from "@common/types/hooks"
 import { CheckoutLineItemsAddPayload } from "@framework/schema"
