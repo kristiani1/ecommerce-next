@@ -19,13 +19,13 @@ const Navbar: FC = () => {
                         <a className={style.link}>All</a>
                     </Link>
                     <Link href="/">
-                        <a className={style.link}>Clothes</a>
+                        <a className={style.link}>Fruits</a>
                     </Link>
                     <Link href="/">
-                        <a className={style.link}>Accessories</a>
+                        <a className={style.link}>Candies</a>
                     </Link>
                     <Link href="/">
-                        <a className={style.link}>Shoes</a>
+                        <a className={style.link}>Sodas</a>
                     </Link>
                 </nav>
                 <div className="flex flex-1 justify-end space-x-8">
